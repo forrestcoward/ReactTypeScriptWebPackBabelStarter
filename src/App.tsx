@@ -1,5 +1,18 @@
 // App.tsx
 import React from 'react';
-export const App: React.FC = () => (
-  <h1>Hello World, from React.</h1>
-);
+import { useIsAuthenticated } from '@azure/msal-react';
+import { Header } from './Header';
+
+const App: React.FC = () => {
+  const isAuthenticated = useIsAuthenticated();
+  return (
+    <>
+      <Header />
+      {isAuthenticated && (
+        <h1>App.tsx</h1>
+      )}
+    </>
+  );
+};
+
+export { App };
