@@ -16,12 +16,14 @@
     "webpack-dev-server": "^4.12.0"
   },
   "scripts": {
-    "dev": "webpack serve",
-    "build": "webpack --mode production --progress --hide-modules",
+    "dev": "webpack serve --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
     "tscheck": "tsc -w"
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.0",
+    "webpack-merge": "^5.10.0"
   }
 }

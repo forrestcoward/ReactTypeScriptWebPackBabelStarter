@@ -5,11 +5,14 @@ module.exports = {
   mode: 'development',
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    assetModuleFilename: 'images/[hash][ext][query]',
+    publicPath: '/', // Required for react router, if used.
   },
   devtool: 'inline-source-map',
   devServer: {
-    hot: false,
+    hot: true,
+    historyApiFallback: true, // Required for react router.
     client: {
       progress: true,
     },
@@ -23,14 +26,18 @@ module.exports = {
           loader: 'babel-loader',
         },
       },
+      {
+        test: /\.css$/i,
+        exclude: /node_modules/,
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.png/,
+        type: 'asset/resource'
+      }
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.jsx', '.js'],
-  },
-  devServer: {
-    static: {
-      directory: path.resolve(__dirname, './dist')
-    }
+    extensions: ['.tsx', '.ts', '.jsx', '.js', '.css'],
   }
 }
