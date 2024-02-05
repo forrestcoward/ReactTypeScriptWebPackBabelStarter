@@ -1,0 +1,1 @@
+staticwebapp.config.json is provided if you want to use an Azure Static Web App (SWA) and have React Router working properly.
